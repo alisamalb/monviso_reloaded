@@ -46,7 +46,7 @@ def log_info_message(msg: str) -> None:
 
 
 
-def parse_input(mutation_file_path: str) -> Union[List, List]:
+def parse_input(mutation_file_path: argparse.Namespace) -> Union[List, List]:
     """Parse the list of mutations and genes from the mutation_list file.
 
     :param mutation_list: path to the file containing the list of mutations and genes
@@ -66,12 +66,13 @@ def parse_input(mutation_file_path: str) -> Union[List, List]:
     return blocks, protein_list
 
 def make_dir(dirname) -> None:
+    """Create a directory
 
-    with contextlib.suppress(FileExistsError):
-        os.mkdir(dirname)
+    :param dirname: Directory path
+    """
+    Path(dirname).mkdir(exist_ok=True)
 
-
-def get_parameters(parameters_path: str="parameters.dat") -> Dict:
+def get_parameters(parameters_path: argparse.Namespace="parameters.dat") -> Dict:
     """Collect the parameters from the parameters file if provided.
 
     :param parameters_path: Path to the parameters file, defaults to "parameters.dat"
@@ -107,7 +108,7 @@ def get_parameters(parameters_path: str="parameters.dat") -> Dict:
     return keywords
 
 
-def make_gene_directories(blocks: List, output_directory: str) -> None:
+def make_gene_directories(blocks: List, output_directory: argparse.Namespace) -> None:
     """Create the necessary directories
     
     :param blocks: List containing the gene names and mutations
@@ -118,9 +119,9 @@ def make_gene_directories(blocks: List, output_directory: str) -> None:
 
     while block < len(blocks):
         gene_name = blocks[block][0].upper()
-        folder_path = os.path.join(output_directory, gene_name)
-        if os.path.exists(folder_path):
-            message = f"Folder {folder_path} exists. Removing it and recreating."
+        folder_path = Path(output_directory, gene_name)
+        if folder_path.is_dir():
+            message = f"Folder {folder_path} exists."
             log_info_message(message)
         make_dir(folder_path)
         write_mutations_file(folder_path, blocks, block)
@@ -135,7 +136,8 @@ def write_mutations_file(folder_path:str, blocks: list,  block: int) -> None:
     :param blocks: List of all mutations and genes
     :param block: Position on the list
     """
-    with Path(folder_path, "mutations.txt").open() as newfile:
+    file_path = folder_path / "mutations.txt"
+    with file_path.open("w", encoding ="utf-8") as newfile:
         mutation = 1
         while mutation < len(blocks[block]):
             newfile.write(str(blocks[block][mutation]) + "\n")
@@ -334,26 +336,12 @@ def argument_error(msg: str) -> None:
     log_info_message(msg)
     raise TypeError(msg)
 
-def print_parameters(args: argparse.Namespace, parameters: Optional[Dict]) -> None:
+def print_parameters(args: argparse.Namespace, parameters: Dict) -> None:
     """Print the parameters provided
 
-    :param args: passed arguments
+    :param parameters: Provided parameters
     """
-    if not parameters:
-        param = (f"\nResolution: {args.resolution}\n"
-            f"SEQ ID: {args.sequence_identity}\n"
-            f"WT MODELS TO PREPARE: {args.max_model_wt}\n"
-            f"MUTANTS MODEL TO PREPARE: {args.max_model_mut}\n"
-            f"MAX PDBS AS TEMPLATES: {args.max_pdb_templates}\n"
-            f"RESIDUES CUTOFF: {args.res_cutoff}\n"
-            f"INPUT FILE: {args.input_file}\n"
-            f"OUTPUT DIRECTORY: {args.out_path}\n"
-            f"DATABASES DIRECTORY: {args.db_home}\n"
-            f"COBALT: {args.cobalt_home}\n"
-            f"HMMER: {args.hmmer_home}"
-            )
-    else:
-        param = (f"\nResolution: {parameters['RESOLUTION']}\n"
+    param = (f"\nResolution: {parameters['RESOLUTION']}\n"
             f"SEQ ID: {parameters['SEQID']}\n"
             f"WT MODELS TO PREPARE: {parameters['NUM_OF_MOD_WT']}\n"
             f"MUTANTS MODEL TO PREPARE: {parameters['NUM_OF_MOD_MUT']}\n"
@@ -367,3 +355,19 @@ def print_parameters(args: argparse.Namespace, parameters: Optional[Dict]) -> No
             )
     log_info_message(param)
 
+def merge_parameters(args: argparse.Namespace) -> Dict:
+    """Make the parameters dictionary if they are passed as arguments
+
+    :param args: passed arguments
+    """
+    return {
+        "RESOLUTION": args.resolution,
+        "SEQID": args.sequence_identity,
+        "PDB_TO_USE": args.max_pdb_templates,
+        "DB_LOCATION": args.db_home,
+        "HMMER_HOME": args.hmmer_home,
+        "COBALT_HOME": args.cobalt_home,
+        "MODEL_CUTOFF": args.res_cutoff,
+        "NUM_OF_MOD_WT": args.max_model_wt,
+        "NUM_OF_MOD_MUT": args.max_model_mut,
+    }

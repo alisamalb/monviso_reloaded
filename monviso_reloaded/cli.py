@@ -32,10 +32,16 @@ from monviso_reloaded.utils.utils import get_parameters
 from monviso_reloaded.utils.utils import make_gene_directories
 from monviso_reloaded.utils.utils import add_arguments
 from monviso_reloaded.utils.utils import check_arguments
+from monviso_reloaded.utils.utils import merge_parameters
 from monviso_reloaded.utils.utils import print_parameters
+
+from monviso_reloaded.run.preparation import get_isoforms_from_db
+from monviso_reloaded.run.preparation import build_master_isoform_file
 
 import argparse
 import sys
+from pathlib import Path
+import os
 
 
 
@@ -51,17 +57,33 @@ def main(argv=None) -> None:
 
     :return: None
     """
+    # arguments and parameters
     parser = argparse.ArgumentParser()
     add_arguments(parser)
     args, unparsed = parser.parse_known_args(argv)
     check_arguments(args)
-    parameters = get_parameters(args.par_file) if args.par_file else None
+    if args.par_file:
+        parameters = get_parameters(args.par_file)
+    else:
+        parameters = merge_parameters(args)  
+              
     print_parameters(args, parameters)
-    # blocks, protein_list = parse_input(mut_file)
 
-    # print(parameters)
+    blocks, protein_list = parse_input(args.input_file)
+    print(protein_list)
+    make_gene_directories(blocks, args.out_path)
+    get_isoforms_from_db(protein_list, args.out_path, 
+                             parameters["DB_LOCATION"])
 
-    # make_gene_directories(blocks, parameters["OUT_DIR"])
+    for gene in protein_list:
+        gene_path = Path(args.out_path, gene)
+        os.chdir(gene_path)
+        build_master_isoform_file(gene_path)
+        check_output = lib.run_hmm(master_directory, newpath, gene, slash, float(parameters["RESOLUTION"]),
+                            float(parameters["SEQID"]), str(parameters["HMMER_HOME"]),
+                            str(parameters["COBALT_HOME"]), int(parameters["PDB_TO_USE"]))
+
+
 
 def init() -> None:
     if __name__ == "__main__":
