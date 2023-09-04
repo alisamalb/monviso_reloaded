@@ -1,26 +1,45 @@
 from pathlib import Path
 import os
+from Bio import SeqIO
 
-def get_isonames(isolist) -> list:
-    isonames = []
-    for i in isolist:
-        i.replace(".fasta", "")
-        isonames.append(i)
-    return isonames
 
-def run_hmm(master_directory, newpath, gene, res_cutoff, seqid_cut, hmmer_home, cobalt_home, max_pdbs):
+# def get_isonames(isolist: list) -> list:
+#    return [i.replace(".fasta", "") for i in isolist]
+
+def make_isof_folders(gene_path, iso: str):
+
+    outdir = Path(gene_path, iso[:-6])
+    os.mkdir(outdir)  # make the output directories
+    os.chdir(outdir)
+    return outdir
+
+
+def start_query(myfasta, gene):
+    print("Looking for homologues")
+    results = blastq.qblast("blastp", "swissprot", myfasta.seq, alignments=500, word_size=6)
+    blastRecord = blastparser.read(results)
+    #  write hit file:
+    with open(f"{gene}_hits.fasta", "w") as f:
+        for alignment in blastRecord.alignments:
+            f.write(f">{str(myfasta.id)}\n")
+            f.write(str(myfasta.seq).strip() + "\n\n")
+            for hsp in alignment.hsps:
+                f.write(f">{alignment.hit_id}\n")
+                f.write(str(hsp.sbjct).replace("-", "") + "\n\n")
+    print("Done")
+
+
+def run_hmm(gene_path: Path, gene: str, res_cutoff: float, seqid_cut: float, hmmer_home: str, cobalt_home: str, max_pdbs: int):
 
     with open("master_isoform.txt", "r") as f:
         iso_list = f.read().strip().splitlines()
-    isonames = get_isonames(iso_list)
+    isonames = [i.replace(".fasta", "") for i in iso_list]
 
     with open("usable_isoforms.txt", "w") as f:
         isonames = [iso for iso in isonames if Path(iso).st_size() != 0]
         for iso in isonames:
-            outdir = newpath + str(iso[:-6])
-            os.mkdir(outdir)  # make the output directories
-            os.chdir(outdir)
-            myfasta = import_sequence(f"../{str(iso)}")
+            outdir = make_isof_folders(gene_path, iso)
+            myfasta = SeqIO.read(Path(outdir.parent.absolute(), f"{str(iso)}.fasta"))
             start_query(myfasta, gene)
             time.sleep(10)
             check_cobalt = run_cobalt(gene, cobalt_home)

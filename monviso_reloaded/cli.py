@@ -38,6 +38,8 @@ from monviso_reloaded.utils.utils import print_parameters
 from monviso_reloaded.run.preparation import get_isoforms_from_db
 from monviso_reloaded.run.preparation import build_master_isoform_file
 
+from monviso_reloaded.run.file1 import run_hmm
+
 import argparse
 import sys
 from pathlib import Path
@@ -79,9 +81,9 @@ def main(argv=None) -> None:
         gene_path = Path(args.out_path, gene)
         os.chdir(gene_path)
         build_master_isoform_file(gene_path)
-        check_output = lib.run_hmm(master_directory, newpath, gene, slash, float(parameters["RESOLUTION"]),
-                            float(parameters["SEQID"]), str(parameters["HMMER_HOME"]),
-                            str(parameters["COBALT_HOME"]), int(parameters["PDB_TO_USE"]))
+        check_output = run_hmm(gene_path, gene, parameters["RESOLUTION"],
+                            parameters["SEQID"], parameters["HMMER_HOME"],
+                            parameters["COBALT_HOME"], parameters["PDB_TO_USE"])
 
 
 
