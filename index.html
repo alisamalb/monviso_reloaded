@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Monviso</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Monviso
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#step-1-gene-and-isoform-verification">Step 1: Gene and Isoform Verification</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-2-modelling-propensity-and-mutation-mapping">Step 2: Modelling Propensity and Mutation Mapping</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#step-3-structural-model-building">Step 3: Structural Model Building</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Monviso</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="welcome-to-monviso-documentation">Welcome to MoNvIso Documentation</h1>
+<p>MoNvIso is a comprehensive software tool designed for the analysis and modeling of protein isoforms. It automates the process of identifying canonical and additional isoforms, assessing their modeling propensity, mapping mutations accurately, and building structural models of proteins. By leveraging data from the Uniprot database, MoNvIso facilitates a deeper understanding of protein function and variation.</p>
+<h2 id="overview">Overview</h2>
+<p>The MoNvIso workflow is streamlined into three primary steps, making it both powerful and user-friendly for researchers and bioinformaticians alike. This workflow ensures a meticulous examination of gene names, isoforms, mutations, and the subsequent construction of structural models when experimental structures are not available.</p>
+<h3 id="step-1-gene-and-isoform-verification">Step 1: Gene and Isoform Verification</h3>
+<p>MoNvIso begins by verifying gene names provided in the user's input file, identifying both canonical and additional isoforms directly from the Uniprot database. The input file also includes a list of mutations of interest, setting the stage for detailed analysis in subsequent steps.</p>
+<h3 id="step-2-modelling-propensity-and-mutation-mapping">Step 2: Modelling Propensity and Mutation Mapping</h3>
+<p>This step focuses on assessing the suitability of available isoforms for modeling and how mutations map onto these isoforms. MoNvIso supervises the availability of templates and ensures mutations are associated with the appropriate isoforms. It identifies and highlights any discrepancies where mutations cannot be mapped, ensuring accuracy and reliability in the selection process.</p>
+<p>The selection procedure, known as the Selection Function, integrates two critical components:</p>
+<ul>
+<li>Structural Function: Assesses the modelling propensity.</li>
+<li>Mutation Function: Evaluates the mapping of mutations on the isoforms.</li>
+</ul>
+<p>Both functions are weighted (default: w1 = w2 = 10), which can be adjusted by the user to tailor the analysis.</p>
+<h3 id="step-3-structural-model-building">Step 3: Structural Model Building</h3>
+<p>In the final step, MoNvIso builds structural models of the identified proteins, including both wild-type (WT) forms and their variants, selected based on the analysis conducted in Step 2. This step is only initiated if experimental structures are not already available, ensuring that only necessary modeling work is performed.
+Getting Started</p>
+<p>Dive into the world of protein isoform analysis with MoNvIso by exploring the following sections of our documentation [To be done]:</p>
+<ul>
+<li>Installation Guide: Learn how to install MoNvIso on your system.</li>
+<li>Quick Start Tutorial: Get up and running with your first analysis.</li>
+<li>Understanding the Workflow: A deeper dive into each step of the MoNvIso workflow.</li>
+<li>FAQs: Answers to common questions about MoNvIso.</li>
+</ul>
+<p>MoNvIso is here to enhance your research with advanced protein isoform analysis and modeling. Whether you're investigating mutations, studying protein functions, or exploring structural variations, MoNvIso provides the tools you need to achieve your objectives with precision and ease.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.5.3
+Build Date UTC : 2024-02-08 15:57:04.982931+00:00
+-->
