@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Cobalt wrapper - Monviso</title>
+    <title>Quick start tutorial - Monviso</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Cobalt wrapper";
-        var mkdocs_page_input_path = "cobalt_wrapper.md";
+        var mkdocs_page_name = "Quick start tutorial";
+        var mkdocs_page_input_path = "tutorial.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -47,31 +47,33 @@
                 <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../tutorial/">Quick start tutorial</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Quick start tutorial</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-download-the-uniprot-databases">Step 1: Download the UniProt databases</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-prepare-input-files">Step 2: Prepare Input Files</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#writing-mutationstxt">Writing mutations.txt</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#writing-parametersdat">Writing parameters.dat</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-run-the-command">Step 3:   Run the command</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Classes</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../run/">Run</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../input_parser/">Input Parser</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../database_parser/">Database Parser</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Cobalt wrapper</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#__init__self">__init__(self)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#runself-hits_file-unionstr-path-aligned_file-unionstr-path-cobalt_home-str-bool">run(self, hits_file: Union[str, Path], aligned_file: Union[str, Path], cobalt_home: str) -&gt; bool</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../cobalt_wrapper/">Cobalt wrapper</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../file_handler/">File handler</a>
                   </li>
@@ -100,8 +102,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Classes</li>
-      <li class="breadcrumb-item active">Cobalt wrapper</li>
+      <li class="breadcrumb-item active">Quick start tutorial</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -110,32 +111,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="cobalt-wrapper-class">Cobalt Wrapper Class</h1>
-<h2 id="overview">Overview</h2>
-<p>The <code>Cobalt</code> class serves as a Python wrapper for COBALT (Constraint-based Multiple Alignment Tool), a software tool used for multiple sequence alignment (MSA). This class enables the integration of COBALT's alignment capabilities within Python applications, facilitating the automated processing of sequence alignments. </p>
-<h2 id="methods">Methods</h2>
-<h3 id="__init__self"><code>__init__(self)</code></h3>
-<p>Initializes a new instance of the <code>Cobalt</code> class. This method prepares the environment for running COBALT alignments but does not require any parameters.</p>
-<h3 id="runself-hits_file-unionstr-path-aligned_file-unionstr-path-cobalt_home-str-bool"><code>run(self, hits_file: Union[str, Path], aligned_file: Union[str, Path], cobalt_home: str) -&gt; bool</code></h3>
-<p>Executes the COBALT alignment process on a specified set of sequences.</p>
+                <h1 id="quick-start-tutorial-for-monviso-reloaded">Quick Start Tutorial for MonViso Reloaded</h1>
+<p>This tutorial will walk you through the process of preparing input files and running MonViso Reloaded for mutation analysis.</p>
+<h2 id="step-1-download-the-uniprot-databases">Step 1: Download the UniProt databases</h2>
+<p>Download and decompress the following files:</p>
 <ul>
-<li><strong>Parameters:</strong></li>
-<li><code>hits_file</code>: The path to the input file containing sequence data to be aligned, typically the output from a BLASTP search. This can be a <code>str</code> or <code>Path</code> object.</li>
-<li><code>aligned_file</code>: The path to the output file where the aligned sequences will be saved, in multi-FASTA format. This can be a <code>str</code> or <code>Path</code> object.</li>
-<li>
-<p><code>cobalt_home</code>: The file system path to the COBALT installation directory, which contains the COBALT executable.</p>
-</li>
-<li>
-<p><strong>Returns:</strong></p>
-</li>
-<li><code>bool</code>: Returns <code>True</code> if the COBALT alignment completes successfully, otherwise returns <code>False</code>.</li>
+<li><a href="https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz">Database of isoforms</a></li>
+<li><a href="https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot_varsplic.fasta.gz">Database of split variances</a></li>
 </ul>
+<p>Remember the directory containing the .fasta files. It will be one of the parameters required to run the software.</p>
+<h2 id="step-2-prepare-input-files">Step 2: Prepare Input Files</h2>
+<p>You will need to create two files: <code>mutations.txt</code> for listing the mutations and <code>parameters.dat</code> for specifying various parameters and paths used by MonViso Reloaded.</p>
+<h3 id="writing-mutationstxt">Writing <code>mutations.txt</code></h3>
+<p>Create a text file named <code>mutations.txt</code> and fill it with your mutations of interest, formatted as shown below:</p>
+<pre><code class="language-text">GRIN1
+R 844 C
+Ala 349 Thr
+Pro 578 Arg
+Ser 688 Tyr
+Tyr 647 Ser
+
+GRIN2B
+E413G
+C436R
+M1342R
+L1424F
+PRO1439ALA
+</code></pre>
+<p>Each section starts with the gene name, followed by lines specifying the original amino acid, its position, and the mutated amino acid.</p>
+<h3 id="writing-parametersdat">Writing <code>parameters.dat</code></h3>
+<p>Create a text file named <code>parameters.dat</code> and specify the configuration for your analysis as follows:</p>
+<pre><code>DB_LOCATION= [path to database location]
+COBALT_HOME=[path to cobalt binaries]
+HMMER_HOME=[path to HMMER binaries]
+MODELLER_EXEC=[command to run modeller e.g., mod10.5]
+RESOLUTION=4.50
+SEQID=25
+HMM_TO_IMPORT=100
+MODEL_CUTOFF=5
+PDB_TO_USE=10
+NUM_OF_MOD_WT=1
+NUM_OF_MOD_MUT=1
+W_STRUCT=10
+W_MUT=10
+</code></pre>
+<h2 id="step-3-run-the-command">Step 3:   Run the command</h2>
+<pre><code class="language-bash">monviso_reloaded -i mutations.txt -o out -p parameters.dat
+</code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../database_parser/" class="btn btn-neutral float-left" title="Database Parser"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../file_handler/" class="btn btn-neutral float-right" title="File handler">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../installation/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../run/" class="btn btn-neutral float-right" title="Run">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -158,10 +186,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../database_parser/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../installation/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../file_handler/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../run/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
