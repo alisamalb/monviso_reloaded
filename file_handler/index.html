@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>File handler - Monviso</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "File handler";
+        var mkdocs_page_input_path = "file_handler.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Monviso
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Classes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../run/">Run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../input_parser/">Input Parser</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../database_parser/">Database Parser</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cobalt_wrapper/">Cobalt wrapper</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">File handler</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#remove_fileself-file_path-unionstr-path">remove_file(self, file_path: Union[str, Path])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create_directoryself-dir_path-unionstr-path">create_directory(self, dir_path: Union[str, Path])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#move_fileself-src-unionstr-path-dest-unionstr-path">move_file(self, src: Union[str, Path], dest: Union[str, Path])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#copy_fileself-src-unionstr-path-dest-unionstr-path">copy_file(self, src: Union[str, Path], dest: Union[str, Path])</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#write_fileself-file_path-unionstr-path-content-str">write_file(self, file_path: Union[str, Path], content: str)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#check_existenceself-path-unionstr-path-bool">check_existence(self, path: Union[str, Path]) -&gt; bool</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#read_fileself-path-unionstr-path-str">read_file(self, path: Union[str, Path]) -&gt; str</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gene/">Gene</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../isoform/">Isoform</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../template/">Template</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pdb_manager/">PDB manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../modeller_manager/">Modeller manager</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Monviso</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Classes</li>
+      <li class="breadcrumb-item active">File handler</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="filehandler-class">FileHandler Class</h1>
+<h2 id="overview">Overview</h2>
+<p>The <code>FileHandler</code> class provides a simple interface for file and directory operations, including creation, deletion, reading, writing, and moving files. It's designed to unify the complexity of file handling in all the classes of the module, making it easier to fix bugs.</p>
+<h2 id="methods">Methods</h2>
+<h3 id="remove_fileself-file_path-unionstr-path"><code>remove_file(self, file_path: Union[str, Path])</code></h3>
+<p>Removes a file at the specified path.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>file_path</code>: The path to the file to be removed.</li>
+</ul>
+<h3 id="create_directoryself-dir_path-unionstr-path"><code>create_directory(self, dir_path: Union[str, Path])</code></h3>
+<p>Creates a new directory at the specified path. If necessary, it will create all intermediate directories.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>dir_path</code>: The path where the new directory will be created.</li>
+</ul>
+<h3 id="move_fileself-src-unionstr-path-dest-unionstr-path"><code>move_file(self, src: Union[str, Path], dest: Union[str, Path])</code></h3>
+<p>Moves a file from the source path to the destination path.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>src</code>: The source file path.</li>
+<li><code>dest</code>: The destination path.</li>
+</ul>
+<h3 id="copy_fileself-src-unionstr-path-dest-unionstr-path"><code>copy_file(self, src: Union[str, Path], dest: Union[str, Path])</code></h3>
+<p>Copies a file from the source path to the destination path.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>src</code>: The source file path.</li>
+<li><code>dest</code>: The destination path.</li>
+</ul>
+<h3 id="write_fileself-file_path-unionstr-path-content-str"><code>write_file(self, file_path: Union[str, Path], content: str)</code></h3>
+<p>Writes content to a file at the specified path. If the file exists, it will be removed before writing the new content.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li><code>file_path</code>: The file path where the content will be written.</li>
+<li><code>content</code>: The content to write to the file.</li>
+</ul>
+<h3 id="check_existenceself-path-unionstr-path-bool"><code>check_existence(self, path: Union[str, Path]) -&gt; bool</code></h3>
+<p>Checks whether a file or directory exists at the specified path.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li>
+<p><code>path</code>: The path of the file or directory to check.</p>
+</li>
+<li>
+<p><strong>Returns:</strong></p>
+</li>
+<li><code>bool</code>: <code>True</code> if the file or directory exists, <code>False</code> otherwise.</li>
+</ul>
+<h3 id="read_fileself-path-unionstr-path-str"><code>read_file(self, path: Union[str, Path]) -&gt; str</code></h3>
+<p>Reads and returns the content of a file at the specified path.</p>
+<ul>
+<li><strong>Parameters:</strong></li>
+<li>
+<p><code>path</code>: The path of the file to read.</p>
+</li>
+<li>
+<p><strong>Returns:</strong></p>
+</li>
+<li><code>str</code>: The content of the file.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cobalt_wrapper/" class="btn btn-neutral float-left" title="Cobalt wrapper"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../gene/" class="btn btn-neutral float-right" title="Gene">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cobalt_wrapper/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../gene/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

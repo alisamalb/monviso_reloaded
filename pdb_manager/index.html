@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>PDB manager - Monviso</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "PDB manager";
+        var mkdocs_page_input_path = "pdb_manager.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Monviso
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Classes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../run/">Run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../input_parser/">Input Parser</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../database_parser/">Database Parser</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cobalt_wrapper/">Cobalt wrapper</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_handler/">File handler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gene/">Gene</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../isoform/">Isoform</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../template/">Template</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">PDB manager</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pdbmanager">PDBManager</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#accessory-class">Accessory class</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#chainselectionselect">ChainSelection(Select)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_1">Methods</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../modeller_manager/">Modeller manager</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Monviso</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Classes</li>
+      <li class="breadcrumb-item active">PDB manager</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pdb-manager">PDB Manager</h1>
+<p>The <code>PDBManager</code> class is a tool designed for managing Protein Data Bank (PDB) files in Monviso. It leverages Biopython's capabilities to download, filter, and extract valuable information from PDB files. </p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Download PDB Files</strong>: Download PDB files from the Protein Data Bank.</li>
+<li><strong>Extract Clean Chain</strong>: Extracts a specific chain from a PDB file, filtering out non-standard residues and atoms, and checks for resolution cutoffs.</li>
+<li><strong>Extract FASTA Sequence</strong>: Extracts the FASTA sequence from a PDB file.</li>
+</ul>
+<h2 id="pdbmanager"><code>PDBManager</code></h2>
+<p>Manages the downloading, cleaning, and processing of PDB files.</p>
+<h3 id="methods">Methods</h3>
+<ul>
+<li><code>downloadPDB(pdb, out_path)</code>: Downloads a PDB file and saves it locally.</li>
+<li><code>extract_clean_chain(input_pdb_path, output_pdb_path, chain_letter, resolution_cutoff)</code>: Extracts a specific chain from a PDB file, ensuring it meets resolution quality standards.</li>
+<li><code>extract_fasta(pdb_name, pdb_path, output_fasta_path)</code>: Extracts the FASTA sequence from a PDB file.</li>
+</ul>
+<h2 id="accessory-class">Accessory class</h2>
+<h3 id="chainselectionselect"><code>ChainSelection(Select)</code></h3>
+<p>A subclass of Biopython's <code>Select</code> class for filtering specific chains and residues in a PDB file.</p>
+<h4 id="methods_1">Methods</h4>
+<ul>
+<li><code>accept_model(model)</code>: Accepts only the first model in a PDB file.</li>
+<li><code>accept_residue(residue)</code>: Filters residues to include only standard amino acids.</li>
+<li><code>accept_chain(chain)</code>: Filters for a specific chain.</li>
+<li><code>accept_atom(atom)</code>: Filters for standard atoms.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../template/" class="btn btn-neutral float-left" title="Template"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../modeller_manager/" class="btn btn-neutral float-right" title="Modeller manager">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../template/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../modeller_manager/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

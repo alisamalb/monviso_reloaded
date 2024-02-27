@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Input Parser - Monviso</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Input Parser";
+        var mkdocs_page_input_path = "input_parser.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Monviso
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Classes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../run/">Run</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Input Parser</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#expected-parameters">Expected Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#class-methods">Class Methods</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#__init__self-args-kwargs">__init__(self, *args, **kwargs)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#add_argumentsself-none">add_arguments(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#check_argumentsself-args-argparsenamespace-none">check_arguments(self, args: argparse.Namespace) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#parse_inputself-mutation_file_path-str-list">parse_input(self, mutation_file_path: str) -&gt; List</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get_parametersself-parameters_path-str-parametersdat-dict">get_parameters(self, parameters_path: str = "parameters.dat") -&gt; Dict</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#merge_parametersself-args-argparsenamespace-dict">merge_parameters(self, args: argparse.Namespace) -&gt; Dict</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#print_parametersself-args-argparsenamespace-parameters-dict-none">print_parameters(self, args: argparse.Namespace, parameters: Dict) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#load_inputself-argv-tuple">load_input(self, argv) -&gt; tuple</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../database_parser/">Database Parser</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cobalt_wrapper/">Cobalt wrapper</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_handler/">File handler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gene/">Gene</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../isoform/">Isoform</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../template/">Template</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pdb_manager/">PDB manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../modeller_manager/">Modeller manager</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Monviso</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Classes</li>
+      <li class="breadcrumb-item active">Input Parser</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="inputparser-class">InputParser Class</h1>
+<p>The <code>InputParser</code> class extends <code>argparse.ArgumentParser</code> to provide a 
+flexible and user-friendly interface for handling command line arguments as 
+well as parameters from a file. It is specifically tailored for applications 
+that require a dynamic configuration of execution parameters, supporting 
+both direct command line input and the use of a parameters file (loaded with
+the -p flag).</p>
+<h2 id="overview">Overview</h2>
+<p>This class allows for specifying computational parameters and execution 
+environment settings through the command line or by providing a path to a 
+structured parameters file. It is used internally by the Run class to do so.
+It supports validation and merging of parameters 
+to ensure that the execution environment is correctly set up according to 
+the user's specifications.</p>
+<h2 id="expected-parameters">Expected Parameters</h2>
+<p>The <code>InputParser</code> class processes and validates a variety of input parameters essential for the execution of our computational workflow. Here's an overview of these parameters and their significance:</p>
+<ul>
+<li><strong>Resolution</strong>: The minimum template resolution (in Å) for the modeling process, specified as <code>RESOLUTION</code>. Only valid for Cryo-EM and X-Ray structures. All NMR structures are accepted.</li>
+<li><strong>SEQ ID</strong>: The minimum sequence identity threshold, expressed as a percentage (<code>SEQID</code>), for selecting templates. Templates with a sequence identity lower than this threshold will be discarded.</li>
+<li><strong>WT Models to Prepare</strong>: The number of wild-type models to be prepared, indicated by <code>NUM_OF_MOD_WT</code>.</li>
+<li><strong>Mutants Model to Prepare</strong>: Specifies the number of mutant models to prepare, <code>NUM_OF_MOD_MUT</code>.</li>
+<li><strong>Max PDBs as Templates</strong>: The maximum number of PDB templates to use in modeling, <code>PDB_TO_USE</code>. This helps in narrowing down the best templates for accurate modeling.</li>
+<li><strong>Residues Cutoff</strong>: A cutoff for residues, <code>MODEL_CUTOFF</code>, where non-covered regions in the alignment that are this length or longer will be replaced by chain breaks.</li>
+<li><strong>Input File</strong>: Path to the input file containing mutation information, accessed via <code>args.input_file</code>.</li>
+<li><strong>Output Directory</strong>: The directory where output files will be stored, <code>args.out_path</code>.</li>
+<li><strong>Databases Directory</strong>: Location of the databases downloaded from Uniprot, including isoforms, specified in <code>DB_LOCATION</code>.</li>
+<li><strong>COBALT</strong>: Path to the COBALT executable, <code>COBALT_HOME</code>, used for sequence alignment.</li>
+<li><strong>HMMER</strong>: Location of the HMMER software executable, <code>HMMER_HOME</code>, essential for sequence analysis.</li>
+<li><strong>Weight Structural Score</strong>: The weight assigned to the structural score in the modeling process, <code>W_STRUCT</code>. For details on how weights are utilized, refer to <a href="https://doi.org/10.3389/fchem.2022.1059593">Oliva et al.</a>.</li>
+<li><strong>Weight Mutation Score</strong>: Specifies the weight for the mutation score, <code>W_MUT</code>, as described in the referenced publication by Oliva et al.</li>
+<li><strong>Modeller Executable</strong>: Path to the MODELLER executable, <code>MODELLER_EXEC</code>, for homology or comparative modeling of protein three-dimensional structures.</li>
+</ul>
+<h2 id="class-methods">Class Methods</h2>
+<h3 id="__init__self-args-kwargs"><code>__init__(self, *args, **kwargs)</code></h3>
+<p>Initializes the parser with any arguments and keyword arguments acceptable by <code>argparse.ArgumentParser</code>, and sets up the expected arguments.</p>
+<h3 id="add_argumentsself-none"><code>add_arguments(self) -&gt; None</code></h3>
+<p>Defines and adds expected command line arguments to the parser. These include paths to input and output files, paths to external tools like COBALT and HMMER, and computational parameters such as resolution and sequence identity.</p>
+<h3 id="check_argumentsself-args-argparsenamespace-none"><code>check_arguments(self, args: argparse.Namespace) -&gt; None</code></h3>
+<p>Checks the provided command line arguments to ensure that all necessary information is available. Raises an error if required arguments are missing or if there's a conflict between the parameters file and manual input.</p>
+<h3 id="parse_inputself-mutation_file_path-str-list"><code>parse_input(self, mutation_file_path: str) -&gt; List</code></h3>
+<p>Parses a given file containing a list of mutations and genes. Returns a structured list containing this information for further processing.</p>
+<h3 id="get_parametersself-parameters_path-str-parametersdat-dict"><code>get_parameters(self, parameters_path: str = "parameters.dat") -&gt; Dict</code></h3>
+<p>Loads and returns parameters from a specified parameters file. Defaults to 'parameters.dat' if no file path is provided. This method structures the parameters into a dictionary for easy access.</p>
+<h3 id="merge_parametersself-args-argparsenamespace-dict"><code>merge_parameters(self, args: argparse.Namespace) -&gt; Dict</code></h3>
+<p>Merges parameters provided through the command line with those loaded from the parameters file. This ensures that command line arguments take precedence over file-based parameters.</p>
+<h3 id="print_parametersself-args-argparsenamespace-parameters-dict-none"><code>print_parameters(self, args: argparse.Namespace, parameters: Dict) -&gt; None</code></h3>
+<p>Prints the final set of parameters that will be used for execution. This includes both command line arguments and parameters loaded from the file, highlighting the configuration for the user.</p>
+<h3 id="load_inputself-argv-tuple"><code>load_input(self, argv) -&gt; tuple</code></h3>
+<p>The main method for loading and validating user inputs. It parses command line arguments, validates them, loads additional parameters from a file if specified, and merges them as necessary. Returns a tuple containing the structured arguments and parameters.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../run/" class="btn btn-neutral float-left" title="Run"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../database_parser/" class="btn btn-neutral float-right" title="Database Parser">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../run/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../database_parser/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

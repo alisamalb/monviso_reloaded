@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Run - Monviso</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Run";
+        var mkdocs_page_input_path = "run.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Monviso
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Classes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Run</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#class-methods">Class Methods</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#__init__self">__init__(self)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#load_inputself-argv-none">load_input(self, argv) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#load_mutation_listself-none">load_mutation_list(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create_genesself-none">create_genes(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#create_isoformsself-none">create_isoforms(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run_blastpself-none">run_blastp(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run_cobaltself-none">run_cobalt(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run_hmmsearchself-none">run_hmmsearch(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#load_templatesself-none">load_templates(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#select_isoformsself-none">select_isoforms(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#start_modellerself-none">start_modeller(self) -&gt; None</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#write_reportself">write_report(self)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../input_parser/">Input Parser</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../database_parser/">Database Parser</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cobalt_wrapper/">Cobalt wrapper</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_handler/">File handler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gene/">Gene</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../isoform/">Isoform</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../template/">Template</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pdb_manager/">PDB manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../modeller_manager/">Modeller manager</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Monviso</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Classes</li>
+      <li class="breadcrumb-item active">Run</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="run-class">Run Class</h1>
+<p>The <code>Run</code> class acts as the central coordinator within the MoNvIso software tool, orchestrating the sequence of operations necessary for the analysis and modeling of protein isoforms. This class manages the execution flow, starting from reading user inputs to the final step of modeling, ensuring that each process is executed in the correct order.</p>
+<h2 id="overview">Overview</h2>
+<p>The <code>Run</code> class is designed to streamline the execution of various tasks including loading user inputs, creating Gene and Isoform objects, and managing the execution of their respective methods such as alignment, modeling, and reporting. It serves as a process manager, coordinating between user inputs, database parsing, and the execution of modeling algorithms.</p>
+<h2 id="class-methods">Class Methods</h2>
+<h3 id="__init__self"><code>__init__(self)</code></h3>
+<p>Initializes a new instance of the Run class, setting up the necessary attributes for managing the execution flow.</p>
+<ul>
+<li><strong>Attributes</strong>:</li>
+<li><code>args</code>: A list to hold command line arguments.</li>
+<li><code>parameters</code>: A list to store parameters from the parameters file.</li>
+<li><code>mutation_list</code>: A list to maintain mutations parsed from the input file.</li>
+<li><code>input_parser</code>: An instance of <code>InputParser</code> for parsing user inputs.</li>
+<li><code>genes</code>: A list to hold <code>Gene</code> instances created based on the mutation list.</li>
+</ul>
+<h3 id="load_inputself-argv-none"><code>load_input(self, argv) -&gt; None</code></h3>
+<p>Loads user input from the command line and parameters file, saving them as attributes of the class.</p>
+<ul>
+<li><strong>Parameters</strong>:</li>
+<li><code>argv</code>: Command line arguments.</li>
+</ul>
+<h3 id="load_mutation_listself-none"><code>load_mutation_list(self) -&gt; None</code></h3>
+<p>Parses the list of mutations and genes from the mutation_list file and saves it as an attribute.</p>
+<h3 id="create_genesself-none"><code>create_genes(self) -&gt; None</code></h3>
+<p>Processes the mutation list to create <code>Gene</code> instances for each gene mentioned, storing them in the class's genes list.</p>
+<h3 id="create_isoformsself-none"><code>create_isoforms(self) -&gt; None</code></h3>
+<p>Loads isoforms for each gene from the Uniprot database, enriching the gene instances with isoform data.</p>
+<h3 id="run_blastpself-none"><code>run_blastp(self) -&gt; None</code></h3>
+<p>Initiates a BLASTp search for every loaded isoform to find potential sequence alignments.</p>
+<h3 id="run_cobaltself-none"><code>run_cobalt(self) -&gt; None</code></h3>
+<p>Executes a COBALT run for sequence alignment of the loaded isoforms.</p>
+<h3 id="run_hmmsearchself-none"><code>run_hmmsearch(self) -&gt; None</code></h3>
+<p>Performs an HMM search for every loaded isoform, further refining the alignment process.</p>
+<h3 id="load_templatesself-none"><code>load_templates(self) -&gt; None</code></h3>
+<p>Loads structural templates for the isoforms based on specified parameters.</p>
+<h3 id="select_isoformsself-none"><code>select_isoforms(self) -&gt; None</code></h3>
+<p>Selects isoforms for modeling based on weighted criteria, including structure, mutation impact, and sequence identity.</p>
+<h3 id="start_modellerself-none"><code>start_modeller(self) -&gt; None</code></h3>
+<p>Runs the Modeller tool for the selected isoforms to generate structural models.</p>
+<h3 id="write_reportself"><code>write_report(self)</code></h3>
+<p>Generates a comprehensive report detailing the outcomes of the modeling process for each gene.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../input_parser/" class="btn btn-neutral float-right" title="Input Parser">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../input_parser/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

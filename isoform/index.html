@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Isoform - Monviso</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Isoform";
+        var mkdocs_page_input_path = "isoform.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Monviso
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Classes</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../run/">Run</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../input_parser/">Input Parser</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../database_parser/">Database Parser</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cobalt_wrapper/">Cobalt wrapper</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_handler/">File handler</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../gene/">Gene</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Isoform</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../template/">Template</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pdb_manager/">PDB manager</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../modeller_manager/">Modeller manager</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Monviso</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Classes</li>
+      <li class="breadcrumb-item active">Isoform</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="isoform-class-documentation">Isoform Class Documentation</h1>
+<h2 id="overview">Overview</h2>
+<p>The <code>Isoform</code> class is a central component of the Monviso package, encapsulating comprehensive information about gene isoforms, including their sequences, mutations, and alignments. It is designed to facilitate sophisticated calculations and analyses on these sequences, making it an invaluable tool for computational biology researchers and developers. This class supports mutation assessment, sequence alignment, and the generation of structural models, among other functionalities.</p>
+<h2 id="attributes">Attributes</h2>
+<p>Upon initialization, the <code>Isoform</code> class sets up several attributes that are crucial for its operation:</p>
+<ul>
+<li><code>gene_name</code>: The name of the gene associated with this isoform.</li>
+<li><code>isoform_index</code>: An integer representing the isoform's index or identifier.</li>
+<li><code>isoform_name</code>: A string derived from the isoform index, prefixed with "isoform" for easy identification.</li>
+<li><code>mutations</code>: A list of mutations associated with this isoform.</li>
+<li><code>first_line</code>: The first line of the sequence, often containing a descriptor or header.</li>
+<li><code>sequence</code>: The actual sequence of the isoform, typically represented as a list of strings.</li>
+<li><code>out_path</code>: The output directory path where the isoform's data (sequences, templates, models) will be stored.</li>
+<li><code>mutation_score</code>: Initialized to 0, intended to hold a score based on mutation analysis.</li>
+<li><code>structural_score</code>: Initialized to 0, intended to represent a score derived from structural analysis.</li>
+<li><code>selection_score</code>: Initialized to 0, a composite score that may incorporate various scoring metrics.</li>
+<li><code>templates</code>: An initially empty list, intended to hold template data used in modeling.</li>
+<li><code>modellable</code>: A boolean flag indicating whether the isoform can be modeled based on available templates.</li>
+<li><code>aligned_sequence</code>: A string to store the sequence aligned against a reference or template.</li>
+<li><code>clean_aligned_sequence</code>: A version of <code>aligned_sequence</code> with gaps in place of long non-covered regions.</li>
+<li><code>modeller_run</code>: Initially <code>None</code>, intended to hold workflow manager related to running the Modeller software for structural modeling.</li>
+</ul>
+<h2 id="methods">Methods</h2>
+<ul>
+<li><code>create_directory(self)</code>: Creates a directory specific to the isoform within the gene's directory structure.</li>
+<li><code>save_fasta_sequence(self)</code>: Saves the isoform's sequence in FASTA format to the specified output path.</li>
+<li><code>blastp_search(self)</code>: Initiates a BLASTP search with the isoform sequence as the query, storing results locally.</li>
+<li><code>create_MSA(self, cobalt_home)</code>: Generates a multiple sequence alignment (MSA) from BLASTP search results.</li>
+<li><code>buildHMM(self, hmmer_home)</code>: Constructs an HMM file from the MSA for template searching.</li>
+<li><code>HMMsearch(self, hmmer_home)</code>: Conducts a search for structural templates using the generated HMM file.</li>
+<li><code>_extract_pdb_names(self, max_pdb)</code>: Extracts PDB names from the HMM search results, limited by <code>max_pdb</code>.</li>
+<li><code>_template_alignment(self, cobalt_home)</code>: Creates an alignment of template sequences, incorporating the isoform sequence.</li>
+<li><code>load_templates()</code>: Initializes template objects based on PDB names and chain identifiers.</li>
+<li><code>_add_chain_breaks(self, sequences, model_cutoff)</code>: Inserts chain breaks in alignments to facilitate sequence identity calculation.</li>
+<li><code>calculate_mutation_score(self, mappable_mutations)</code>: Calculates a score based on the ratio of mappable mutations.</li>
+<li><code>calculate_structural_score(self, model_cutoff)</code>: Assesses coverage of the isoform sequence by template structures.</li>
+<li><code>filter_templates_by_sequence_identity()</code>: Filters out templates with sequence identity below a specified threshold.</li>
+<li><code>calculate_selection_score()</code>: Computes a selection score based on structural and mutation scores.</li>
+<li><code>run_modeller(self, mutation, modeller_exec, model_cutoff)</code>: Manages the execution of Modeller for structural modeling.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../gene/" class="btn btn-neutral float-left" title="Gene"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../template/" class="btn btn-neutral float-right" title="Template">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../gene/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../template/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
