@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Modeller manager - Monviso</title>
+    <title>Understanding the Workflow - Monviso</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Modeller manager";
-        var mkdocs_page_input_path = "modeller_manager.md";
+        var mkdocs_page_name = "Understanding the Workflow";
+        var mkdocs_page_input_path = "workflow.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -51,8 +51,14 @@
                 <li class="toctree-l1"><a class="reference internal" href="../tutorial/">Quick start tutorial</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../workflow/">Understanding the Workflow</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Understanding the Workflow</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#for-the-user">For the user</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#under-the-hood">Under the hood</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <ul>
@@ -60,7 +66,7 @@
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Classes</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../run/">Run</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../input_parser/">Input Parser</a>
@@ -79,33 +85,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pdb_manager/">PDB manager</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Modeller manager</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#class-initialization">Class Initialization</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#__enter__-and-__exit__">__enter__ and __exit__</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#write">write</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#write_script">write_script</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_mutate_reside">_mutate_reside</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_add_chain_breaks">_add_chain_breaks</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#write_alignment">write_alignment</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#run">run</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#load_log_file">load_log_file</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../modeller_manager/">Modeller manager</a>
                   </li>
               </ul>
       </div>
@@ -122,8 +102,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Classes</li>
-      <li class="breadcrumb-item active">Modeller manager</li>
+      <li class="breadcrumb-item active">Understanding the Workflow</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -132,39 +111,42 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="modeller-manager">Modeller Manager</h1>
-<h2 id="overview">Overview</h2>
-<p>The <code>ModellerManager</code> class is designed to facilitate the process of protein modeling by interfacing with the Modeller software. This class is responsible for setting up and running Modeller scripts, handling mutations, and organizing input and output files. It provides a convenient way to perform protein structure predictions and mutations in a structured and automated manner.</p>
-<h2 id="class-initialization">Class Initialization</h2>
-<p>The constructor of the <code>ModellerManager</code> class takes several arguments:</p>
+                <h1 id="workflow">Workflow</h1>
+<h2 id="for-the-user">For the user</h2>
 <ul>
-<li><code>isoform</code>: An object representing the isoform to be modeled.</li>
-<li><code>mutation</code>: A list representing the mutation(s) to be applied to the isoform.</li>
-<li><code>modeller_exec</code>: A string specifying the path to the Modeller executable.</li>
-<li><code>model_cutoff</code>: An integer specifying the cutoff for model selection.</li>
+<li>The user provides the parameters (software paths, model settings, ...)</li>
+<li>The user provides a list of genes and mutations</li>
+<li>MoNvIso searches UniProt's databases for the canonical sequence and other isoforms</li>
+<li>In the output path, a directory is created for every gene</li>
+<li>In every gene's directory, a sub-directory is created for every isoform</li>
+<li>The PDB databank is queried for every sequence and returns a list of similar sequences</li>
+<li>HMMER is used to combine the results and start a new search for templates</li>
+<li>The PDB files of the templates are downloaded, and the template chain is extracted</li>
+<li>The sequence of the extracted chains is aligned with the sequence to model</li>
+<li>Chain breaks are introduced in place of large gaps</li>
+<li>The number of mutations that are mappable and the value of sequence identity are measured</li>
+<li>Isoforms are ranked based on their score (ability to model the mutated protein)</li>
+<li>The aligned sequence is passed to Modeller for modelling</li>
 </ul>
-<h2 id="methods">Methods</h2>
-<h3 id="__enter__-and-__exit__"><code>__enter__</code> and <code>__exit__</code></h3>
-<p>These methods allow the <code>ModellerManager</code> class to be used within a context manager, ensuring that resources are managed efficiently.</p>
-<h3 id="write"><code>write</code></h3>
-<p>This method prepares the necessary files for running Modeller. It applies mutations (if any) to the isoform sequence, writes the alignment file for Modeller, and generates the Modeller script.</p>
-<h3 id="write_script"><code>write_script</code></h3>
-<p>Generates the python script to be executed by Modeller. This script specifies the alignment file, template structures, and the sequence to be modeled. It also sets up the modeling parameters and scoring methods.</p>
-<h3 id="_mutate_reside"><code>_mutate_reside</code></h3>
-<p>A private method that applies the specified mutation to the isoform's aligned sequence. It returns a boolean indicating the success of the mutation.</p>
-<h3 id="_add_chain_breaks"><code>_add_chain_breaks</code></h3>
-<p>This private method adds chain breaks to the sequences in cases where there is insufficient coverage for a specified number of residues. It is used to prepare the sequences for modeling.</p>
-<h3 id="write_alignment"><code>write_alignment</code></h3>
-<p>Prepares the alignment file for Modeller, incorporating any mutations and chain breaks as necessary. This file is used by Modeller to understand the relationship between the template structures and the sequence to be modeled.</p>
-<h3 id="run"><code>run</code></h3>
-<p>Executes the Modeller script, performing the actual modeling process. It handles the creation of the output directory and the execution of the script within the appropriate environment.</p>
-<h3 id="load_log_file"><code>load_log_file</code></h3>
-<p>After Modeller has run, this method reads the log file generated by Modeller to extract the DOPE scores and other relevant metrics. This information is used for model selection and evaluation.</p>
+<h2 id="under-the-hood">Under the hood</h2>
+<p>The MoNvIso run is coordinated by an instance of the Run class.</p>
+<ul>
+<li>The <code>Run.load_mutation_list()</code> method passes the mutation file to the Input parser, which returns the mutations in a list type</li>
+<li>The <code>Run.load_input()</code> method takes the input parameters and passes them to the Input_parser file, which returns them processed as a dictionary</li>
+<li>The <code>Run.create_genes()</code> method instances the Gene object, one object per gene to model. These genes are stored in a list as a local attribute of the Run.</li>
+<li>The <code>Run.create_isoform()</code> method loads the UniProt databases via a Database_Parser object. The database returns one sequence per isoform per gene. Each is used to instance an Isoform object. Every isoform object is stored in a list as an attribute of the corresponding gene.</li>
+<li>At this point, the Gene object and Isoform objects take care of creating their corresponding directories and .fasta files with the alignments</li>
+<li>The Run object coordinates the creation of alignments with the <code>Run.run_blastp()</code>, <code>Run.run_cobalt()</code>, <code>Run.run_hmmsearch()</code> methods. Each isoform of each gene runs a blastp search, saves the output, creates a .hmm with HMMER, and uses it for a search with hmmsearch. The output contains the PDB IDs and chains of the best templates</li>
+<li><code>Run.load_templates()</code>: For every proposed template, a Template instance is created, which takes care of downloading and extracting the chain and fasta sequence from the PDB file. The operations on the PDB file are managed by the PDB_manager class. All the sequences of the templates are aligned with Cobalt.</li>
+<li><code>Run.select_isoform()</code>: For every isoform, the mutation score (How many mutations can be mapped on the sequence), structural score (sequence identity), and the Selection score (the first two combined) are calculated. The isoforms are ranked, and the ones with higher scores are preferred to model the mutation.</li>
+<li><code>Run.start_modeller()</code>: The isoforms that can be modeled will create the Modeller input file and start a Modeller run.</li>
+</ul>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../pdb_manager/" class="btn btn-neutral float-left" title="PDB manager"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tutorial/" class="btn btn-neutral float-left" title="Quick start tutorial"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../FAQs/" class="btn btn-neutral float-right" title="FAQs">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -187,8 +169,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../pdb_manager/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../tutorial/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../FAQs/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Modeller manager - Monviso</title>
+    <title>FAQs - Monviso</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Modeller manager";
-        var mkdocs_page_input_path = "modeller_manager.md";
+        var mkdocs_page_name = "FAQs";
+        var mkdocs_page_input_path = "FAQs.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -55,12 +55,24 @@
                 <li class="toctree-l1"><a class="reference internal" href="../workflow/">Understanding the Workflow</a>
                 </li>
               </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../FAQs/">FAQs</a>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">FAQs</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-settings-are-used-for-the-blast-search">What settings are used for the BLAST search?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-settings-are-used-for-cobalt-to-create-the-msa-multiple-sequence-alignment">What settings are used for COBALT to create the MSA (Multiple Sequence Alignment)?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#can-i-use-monviso-without-an-internet-connection">Can I use MoNvIso without an internet connection?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-species-proteins-can-be-modeled">What species' proteins can be modeled?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-can-i-cite-monviso">How can I cite MoNvIso?</a>
+    </li>
+    </ul>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Classes</span></p>
-              <ul class="current">
+              <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../run/">Run</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../input_parser/">Input Parser</a>
@@ -79,33 +91,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../pdb_manager/">PDB manager</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Modeller manager</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#class-initialization">Class Initialization</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#__enter__-and-__exit__">__enter__ and __exit__</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#write">write</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#write_script">write_script</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_mutate_reside">_mutate_reside</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_add_chain_breaks">_add_chain_breaks</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#write_alignment">write_alignment</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#run">run</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#load_log_file">load_log_file</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../modeller_manager/">Modeller manager</a>
                   </li>
               </ul>
       </div>
@@ -122,8 +108,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Classes</li>
-      <li class="breadcrumb-item active">Modeller manager</li>
+      <li class="breadcrumb-item active">FAQs</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -132,39 +117,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="modeller-manager">Modeller Manager</h1>
-<h2 id="overview">Overview</h2>
-<p>The <code>ModellerManager</code> class is designed to facilitate the process of protein modeling by interfacing with the Modeller software. This class is responsible for setting up and running Modeller scripts, handling mutations, and organizing input and output files. It provides a convenient way to perform protein structure predictions and mutations in a structured and automated manner.</p>
-<h2 id="class-initialization">Class Initialization</h2>
-<p>The constructor of the <code>ModellerManager</code> class takes several arguments:</p>
+                <h1 id="frequently-asked-questions-faqs">Frequently Asked Questions (FAQs)</h1>
+<h2 id="what-settings-are-used-for-the-blast-search">What settings are used for the BLAST search?</h2>
 <ul>
-<li><code>isoform</code>: An object representing the isoform to be modeled.</li>
-<li><code>mutation</code>: A list representing the mutation(s) to be applied to the isoform.</li>
-<li><code>modeller_exec</code>: A string specifying the path to the Modeller executable.</li>
-<li><code>model_cutoff</code>: An integer specifying the cutoff for model selection.</li>
+<li><code>blastp</code></li>
+<li>Database: <code>swissprot</code></li>
+<li>Input: <code>fasta_file.seq</code></li>
+<li>Alignments: <code>500</code></li>
+<li>Word size: <code>6</code></li>
 </ul>
-<h2 id="methods">Methods</h2>
-<h3 id="__enter__-and-__exit__"><code>__enter__</code> and <code>__exit__</code></h3>
-<p>These methods allow the <code>ModellerManager</code> class to be used within a context manager, ensuring that resources are managed efficiently.</p>
-<h3 id="write"><code>write</code></h3>
-<p>This method prepares the necessary files for running Modeller. It applies mutations (if any) to the isoform sequence, writes the alignment file for Modeller, and generates the Modeller script.</p>
-<h3 id="write_script"><code>write_script</code></h3>
-<p>Generates the python script to be executed by Modeller. This script specifies the alignment file, template structures, and the sequence to be modeled. It also sets up the modeling parameters and scoring methods.</p>
-<h3 id="_mutate_reside"><code>_mutate_reside</code></h3>
-<p>A private method that applies the specified mutation to the isoform's aligned sequence. It returns a boolean indicating the success of the mutation.</p>
-<h3 id="_add_chain_breaks"><code>_add_chain_breaks</code></h3>
-<p>This private method adds chain breaks to the sequences in cases where there is insufficient coverage for a specified number of residues. It is used to prepare the sequences for modeling.</p>
-<h3 id="write_alignment"><code>write_alignment</code></h3>
-<p>Prepares the alignment file for Modeller, incorporating any mutations and chain breaks as necessary. This file is used by Modeller to understand the relationship between the template structures and the sequence to be modeled.</p>
-<h3 id="run"><code>run</code></h3>
-<p>Executes the Modeller script, performing the actual modeling process. It handles the creation of the output directory and the execution of the script within the appropriate environment.</p>
-<h3 id="load_log_file"><code>load_log_file</code></h3>
-<p>After Modeller has run, this method reads the log file generated by Modeller to extract the DOPE scores and other relevant metrics. This information is used for model selection and evaluation.</p>
+<h2 id="what-settings-are-used-for-cobalt-to-create-the-msa-multiple-sequence-alignment">What settings are used for COBALT to create the MSA (Multiple Sequence Alignment)?</h2>
+<ul>
+<li>Output format: <code>mfasta</code></li>
+<li>End gap open penalty: <code>5</code></li>
+<li>End gap extend penalty: <code>1</code></li>
+<li>Gap open penalty: <code>11</code></li>
+<li>Gap extend penalty: <code>1</code></li>
+<li>BLAST e-value: <code>0.003</code></li>
+<li>No RPS: <code>T</code></li>
+<li>Tree method: <code>clust</code></li>
+</ul>
+<h2 id="can-i-use-monviso-without-an-internet-connection">Can I use MoNvIso without an internet connection?</h2>
+<p>No, MoNvIso requires an internet connection to access necessary databases like UniProt and PDB.</p>
+<h2 id="what-species-proteins-can-be-modeled">What species' proteins can be modeled?</h2>
+<p>Currently, MoNvIso only models proteins belonging to <em>Homo sapiens</em> as extracted from the UniProt database.</p>
+<h2 id="how-can-i-cite-monviso">How can I cite MoNvIso?</h2>
+<p>Please cite MoNvIso as follows:</p>
+<p>Oliva, F., Musiani, F., Giorgetti, A., De Rubeis, S., Sorokina, O., Armstrong, D. J., Carloni, P., &amp; Ruggerone, P. (2023). Modelling eNvironment for Isoforms (MoNvIso): A general platform to predict structural determinants of protein isoforms in genetic diseases. Frontiers in chemistry, 10, 1059593. <a href="https://doi.org/10.3389/fchem.2022.1059593">https://doi.org/10.3389/fchem.2022.1059593</a></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../pdb_manager/" class="btn btn-neutral float-left" title="PDB manager"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../workflow/" class="btn btn-neutral float-left" title="Understanding the Workflow"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../run/" class="btn btn-neutral float-right" title="Run">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -187,8 +172,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../pdb_manager/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../workflow/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
+    
+      <span><a href="../run/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
