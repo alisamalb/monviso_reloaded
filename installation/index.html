@@ -176,18 +176,18 @@ cd monviso_reloaded
 <p><strong>Insert Your Modeller License:</strong> Open the downloaded Containerfile in a text editor and replace <code>XXXX</code> with your Modeller license key. This step is crucial for ensuring that Modeller functions correctly within the container.</p>
 </li>
 <li>
-<p><strong>Build the Docker Image:</strong> With the license key in place, you can now build your Docker image. Open a terminal and run the following command in the directory where the Containerfile is located:
-   <code>bash
-   docker build -t monviso -f Containerfile .</code>
-This command builds a Docker image named monviso using the instructions in your Containerfile.</p>
-</li>
-<li>
-<p><strong>Run the Container with a Mounted Working Directory:</strong> If you wish to use your own working directory (e.g., /Work) inside the container, you can do so by mounting it when you start the container. Run the following command to start the container and access your working directory within it:
-   <code>bash
-   docker run -it -v /Work:/Monviso/Work monviso</code>
-Replace /Work with the path to your actual working directory on the host machine. This command mounts your host directory /Work to /Monviso/Work inside the container, allowing you to work with your files directly from within the container environment.</p>
+<p><strong>Build the Docker Image:</strong> With the license key in place, you can now build your Docker image. Open a terminal and run the following command in the directory where the Containerfile is located:</p>
 </li>
 </ol>
+<p><code>bash
+   docker build -t monviso -f Containerfile .</code></p>
+<p>This command builds a Docker image named monviso using the instructions in your Containerfile.</p>
+<ol>
+<li><strong>Run the Container with a Mounted Working Directory:</strong> If you wish to use your own working directory (e.g., /Work) inside the container, you can do so by mounting it when you start the container. Run the following command to start the container and access your working directory within it:</li>
+</ol>
+<p><code>bash
+   docker run -it -v /Work:/Monviso/Work monviso</code></p>
+<p>Replace /Work with the path to your actual working directory on the host machine. This command mounts your host directory /Work to /Monviso/Work inside the container, allowing you to work with your files directly from within the container environment.</p>
 <p>By following these steps, you'll have a fully functional Monviso environment set up and ready to use in Docker, complete with your required Modeller license and access to your working directory.</p>
               
             </div>
