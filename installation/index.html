@@ -136,6 +136,7 @@
 <li><strong>Cobalt:</strong> A multiple sequence alignment tool. Download from <a href="https://www.ncbi.nlm.nih.gov/tools/cobalt/cobalt.cgi?CMD=Doc">NCBI Cobalt</a>.</li>
 <li><strong>HMMER:</strong> Software for searching sequence databases for sequence homologs. Available at <a href="http://hmmer.org/">HMMER</a>.</li>
 <li><strong>Modeller:</strong> Used for homology or comparative modeling of protein three-dimensional structures. Download from <a href="https://salilab.org/modeller/download_installation.html">Modeller</a>.</li>
+<li><strong>PeSTO</strong> A parameter-free geometric deep learning method to predict protein interaction interfaces from a protein structure. Clone from <a href="https://github.com/LBM-EPFL/PeSTo">github</a>.</li>
 </ul>
 <h2 id="installation-steps">Installation Steps</h2>
 <p>Follow these steps to install the necessary tools and the MonViso Reloaded package:</p>
@@ -144,6 +145,7 @@
 <li><strong>HMMER:</strong> Follow the installation instructions provided on the HMMER website.</li>
 <li><strong>COBALT:</strong> Refer to the Cobalt download page for detailed installation instructions.</li>
 <li><strong>MODELLER:</strong> Visit the Modeller website for installation guides tailored to your operating system.</li>
+<li><strong>PeSTo</strong> </li>
 </ul>
 <h3 id="2-check-python-version">2. Check Python Version</h3>
 <p>Ensure you have Python 3.9 installed by running the following command in your terminal:</p>
@@ -168,15 +170,12 @@ cd monviso_reloaded
 <p><strong>Download the Containerfile:</strong> First, you need to download the Containerfile. Save the file from this URL: <a href="https://raw.githubusercontent.com/alisamalb/monviso_reloaded/main/Containerfile">Containerfile</a>.</p>
 </li>
 <li>
-<p><strong>Insert Your Modeller License:</strong> Open the downloaded Containerfile in a text editor and replace <code>XXXX</code> with your Modeller license key. This step is crucial for ensuring that Modeller functions correctly within the container.</p>
-</li>
-<li>
-<p><strong>Build the Docker Image:</strong> With the license key in place, you can now build your Docker image. Open a terminal and run the following command in the directory where the Containerfile is located:   </p>
+<p><strong>Build the Docker Image:</strong> If you have a valid Modeller license, you can now build your Docker image. Open a terminal and run the following command in the directory where the Containerfile is located:</p>
 </li>
 </ol>
-<pre><code class="language-bash">docker build -t monviso -f Containerfile .
+<pre><code class="language-bash">docker build --build-arg MODELLER_LICENSE=yourmodellerlicensehere -t monviso -f Containerfile .
 </code></pre>
-<p>This command builds a Docker image named monviso using the instructions in your Containerfile.</p>
+<p>Replace 'yourmodellerlicensehere' with your modeller license. This command builds a Docker image named monviso using the instructions in your Containerfile.</p>
 <ol>
 <li><strong>Run the Container with a Mounted Working Directory:</strong> If you wish to use your own working directory (e.g., /Work) inside the container, you can do so by mounting it when you start the container. Run the following command to start the container and access your working directory within it:</li>
 </ol>
